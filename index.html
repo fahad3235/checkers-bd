@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkers BD — Offline checkers game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1 data-i18n="title">Checkers BD</h1>
+    <p class="subtitle" data-i18n="subtitle">Classic 8×8 draughts — play against the computer or a friend. Fully offline, no account, no server.</p>
+  </div>
+  <div class="top-actions">
+    <button id="soundBtn" type="button">Sound on</button>
+    <button id="langBtn" type="button">বাংলা</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="game-col">
+    <div class="controls">
+      <label>
+        <span data-i18n="modeLabel">Game mode</span>
+        <select id="modeSelect">
+          <option value="cpu" data-i18n="modeVsCpu">You vs Computer</option>
+          <option value="2p" data-i18n="mode2p">Two players (pass &amp; play)</option>
+        </select>
+      </label>
+      <label>
+        <span data-i18n="diffLabel">Computer strength</span>
+        <select id="diffSelect">
+          <option value="easy" data-i18n="diffEasy">Easy</option>
+          <option value="medium" data-i18n="diffMedium">Medium</option>
+          <option value="hard" data-i18n="diffHard">Hard</option>
+        </select>
+      </label>
+      <button id="newGameBtn" type="button" data-i18n="newGame">New game</button>
+      <button id="undoBtn" type="button" data-i18n="undo">Undo</button>
+    </div>
+
+    <div class="status" role="status">
+      <div id="statusMain" class="status-main"></div>
+      <div id="statusHint" class="status-hint"></div>
+      <div class="captured-line">
+        <span data-i18n="captured">Captured</span>:
+        <span class="cap-red">&#9679; <span id="capturedRed">0</span></span>
+        <span class="cap-black">&#9679; <span id="capturedBlack">0</span></span>
+      </div>
+    </div>
+
+    <div id="board" class="board" role="grid" aria-label="Checkers board"></div>
+    <p class="legend"><span class="dot red-dot"></span> <span data-i18n="red">Red</span> &nbsp;·&nbsp; <span class="dot black-dot"></span> <span data-i18n="black">Black</span> &nbsp;·&nbsp; &#9673; = <span data-i18n="captureMark">capture</span></p>
+  </section>
+
+  <aside class="side-col">
+    <section class="panel">
+      <h2 data-i18n="history">Move history</h2>
+      <ol id="historyList" class="history"></ol>
+    </section>
+    <section class="panel">
+      <h2 data-i18n="stats">Career stats</h2>
+      <p id="statA"></p>
+      <p id="statB"></p>
+      <p id="statDraws"></p>
+      <p id="statStreak"></p>
+    </section>
+    <details class="panel">
+      <summary data-i18n="rulesTitle">How to play</summary>
+      <p data-i18n="rulesBody"></p>
+    </details>
+  </aside>
+</main>
+
+<footer data-i18n="footer"></footer>
+
+<script src="logic.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
